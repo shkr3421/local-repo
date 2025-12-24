@@ -128,3 +128,37 @@ db.products.updateOne(
   { _id: 2 },
   { $set: { name: "New Product Name" } }
 );
+
+..
+
+use product_db
+
+/* 1. A user updates their email address (email stored in product document) */
+db.products.updateOne(
+  { _id: 1 },
+  { $set: { email: "newemail@gmail.com" } }
+);
+
+/* 2. Order status changes from pending to delivered (status stored in product document) */
+db.products.updateOne(
+  { _id: 1 },
+  { $set: { status: "delivered" } }
+);
+
+/* 3. Add discount field with value 10 */
+db.products.updateOne(
+  { _id: 2 },
+  { $set: { discount: 10 } }
+);
+
+/* 4. Update nested address.city */
+db.products.updateOne(
+  { _id: 3 },
+  { $set: { "address.city": "Mumbai" } }
+);
+
+/* 5. Rename product without affecting price or category */
+db.products.updateOne(
+  { _id: 4 },
+  { $set: { name: "Updated Product Name" } }
+);
