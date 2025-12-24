@@ -1,31 +1,31 @@
 
 
-/* 1. A user adds a new address to their profile */
+/* 1. A user deletes an old address */
 db.products.updateOne(
   { _id: 1 },
-  { $push: { addresses: { city: "Delhi", pincode: 110001 } } }
+  { $pull: { addresses: { city: "Pune" } } }
 );
 
-/* 2. A product receives a new review */
+/* 2. A product review violates policy */
 db.products.updateOne(
   { _id: 1 },
-  { $push: { reviews: { user: "Shashank", rating: 5, comment: "Good product" } } }
+  { $pull: { reviews: { rating: 1 } } }
 );
 
-/* 3. A student enrolls in a new course */
+/* 3. A student drops a course */
 db.products.updateOne(
   { _id: 2 },
-  { $push: { courses: "MongoDB" } }
+  { $pull: { courses: "Maths" } }
 );
 
-/* 4. An order has multiple products, add one more product */
+/* 4. Remove all products with price < 1000 from cart array */
 db.products.updateOne(
   { _id: 3 },
-  { $push: { orderItems: { productName: "Mouse", price: 500 } } }
+  { $pull: { cart: { price: { $lt: 1000 } } } }
 );
 
-/* 5. A chat app stores messages in an array, push new message */
+/* 5. Delete all inactive tags from a product document */
 db.products.updateOne(
   { _id: 4 },
-  { $push: { messages: "Hello, this is a new message" } }
+  { $pull: { tags: "inactive" } }
 );
