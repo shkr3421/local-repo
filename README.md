@@ -101,3 +101,30 @@ db.products.aggregate([
     }
   }
 ])
+
+
+
+db.users.updateOne(
+  { _id: 1 },
+  { $set: { email: "newemail@gmail.com" } }
+);
+
+db.orders.updateOne(
+  { _id: 101 },
+  { $set: { status: "delivered" } }
+);
+
+db.products.updateOne(
+  { _id: 1 },
+  { $set: { discount: 10 } }
+);
+
+db.users.updateOne(
+  { _id: 1 },
+  { $set: { "address.city": "Mumbai" } }
+);
+
+db.products.updateOne(
+  { _id: 2 },
+  { $set: { name: "New Product Name" } }
+);
